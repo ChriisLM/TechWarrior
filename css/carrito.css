@@ -1,0 +1,19 @@
+.productos-section{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2em;
+}
+
+.productos-container{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 2em;
+    padding: 2em;
+}
+
+.pago-container{
+    width: 40%;
+}
