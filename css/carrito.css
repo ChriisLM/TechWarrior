@@ -17,18 +17,24 @@
     width: 40%;
     padding: 0 2em;
     padding-top: 1em;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
 }
 
 .pago-container{
     background-color: white;
     border-radius: 15px;
     width: 25em;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .header-carrito{
     padding: 1em;
     padding-bottom: .5em;
     border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: center;
 }
 
 .header-carrito h2{
@@ -63,3 +69,34 @@
 .carrito-item-cantidad{
     width: 3em;
 }
+
+.pago-total{
+    padding-top: 1em;
+}
+
+.fila{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: .5em;
+}
+
+.btn-pagar{
+    display: flex;
+    margin: 0 auto;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    height: 2em;
+    font-family: 'Roboto', sans-serif;
+    column-gap: 1em;
+    margin-bottom: 1em;
+    background-color: black;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .3s;
+    border: none;
+    color: #fff;
+}
+
+/*AGREGAR LOS ESTILOS DEL PAGO Y HACER EL FUNCIONAMIENTO DEL PAGO*/
