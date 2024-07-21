@@ -55,7 +55,11 @@ function quitarDelCarrito(event){
         let card = event.target.parentNode.parentNode.parentNode
         let product = event.target.parentNode
         let productId = parseInt(product.querySelector('span').textContent) 
+
+        let cardPago = document.querySelector(`#id-${productId}`).parentNode
+
         console.log(card);
+        console.log(cardPago);
         cantidadArticulosEnCarrito--
         document.querySelector('#carrito-numero').textContent = cantidadArticulosEnCarrito;
         localStorage.setItem('cantidadArticulosEnCarrito', cantidadArticulosEnCarrito);
@@ -65,8 +69,35 @@ function quitarDelCarrito(event){
         console.log(productIndex);
         productosCarrito.splice(productIndex, 1);
         localStorage.setItem('productosCarrito', JSON.stringify(productosCarrito))
-        card.classList.add('hidden')
+        card.remove()
+        cardPago.remove()
     }
 
     //agregar lo de los precios
 }
+
+function agregarItemsAPago() {
+    let pagoContenedor = document.querySelector('.pago-items-container')
+    productosCarrito.forEach(product => {
+        let cardPago = document.createElement('div');
+        //card.classList.add('product-card')
+        let cardInfo = `
+            <span id="id-${product.id}" class=" disable"></span>
+            <div class="carrito-item-detalles">
+                <div class="carrito-info">
+                    <span class="carrito-item-titulo">${product.productoNombre}</span>
+                    <span class="carrito-item-precio">${product.productoPrecio}</span>
+                </div>
+                <div class="selector-cantidad">
+                    <i class="fa-solid fa-minus restar-cantidad"></i>
+                    <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                    <i class="fa-solid fa-plus sumar-cantidad"></i>
+                </div>
+            </div>
+        `
+        cardPago.innerHTML = cardInfo
+        pagoContenedor.appendChild(cardPago)
+    });
+}
+
+agregarItemsAPago()
