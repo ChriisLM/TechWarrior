@@ -60,6 +60,10 @@
     width: 50%;
 }
 
+.carrito-item-titulo{
+    font-weight: 600;
+}
+
 .selector-cantidad{
     width: 40%;
     display: flex;
@@ -68,6 +72,11 @@
 
 .carrito-item-cantidad{
     width: 3em;
+    border: none;
+    font-size: 15px;
+    background-color: transparent;
+    display: inline-block;
+    text-align: center;
 }
 
 .pago-total{
@@ -97,6 +106,21 @@
     transition: .3s;
     border: none;
     color: #fff;
+}
+
+.hiddenCarrito{
+    margin-right: -100%;
+    opacity: 0;
+    display: none;
+    transition: .3s;
+}
+
+.sinProductos{
+    background-image: url("/img/noCarrito.png");
+    background-repeat: no-repeat;
+    height: 50vh;
+    background-size: contain;
+    background-position: center;
 }
 
 /*AGREGAR LOS ESTILOS DEL PAGO Y HACER EL FUNCIONAMIENTO DEL PAGO*/
