@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Warrior</title>
-    <link rel="stylesheet" href="public/css/estilos.css">
+    <link rel="stylesheet" href="/css/estilos.css">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -21,14 +21,14 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <a href="/index.html">
+            <a href="/">
                 <img class="header-logo" src="img/TechWarrior Logo.png" alt="Tech Warrior">
             </a>
             <nav class="nav-container">
                 <ul>
                     <li><a href="#category">Categorias</a></li>
                     <li><a href="#contact">Contacto</a></li>
-                    <li><a href="/nosotros.html">Nosotros</a></li>
+                    <li><a href="/nosotros">Nosotros</a></li>
                 </ul>
             </nav>
             <form action="">
@@ -49,7 +49,7 @@
                         </path>
                     </svg>
                 </a>
-                <a class="carrito-container" href="/carrito.html">
+                <a class="carrito-container" href="/carrito">
                     <svg width="25" height="25" fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M16.546 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49a.996.996 0 0 0-.87-1.48h-14.8l-.94-2h-3.27v2h2l3.6 7.59-1.35 2.44c-.73 1.34.23 2.97 1.75 2.97h12v-2h-12l1.1-2h7.45Zm-9.39-7h12.15l-2.76 5h-7.02l-2.37-5Zm.84 12c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2Zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2Z">
@@ -175,7 +175,7 @@
     <section class="category-section" id="category">
         <div class="category-container">
             <article class="category-card">
-                <a href="/productos.html" class="categoria-btn" data-categoria="1">
+                <a class="categoria-btn" data-categoria=1>
                     <img class="category-image" src="/img/categoriaPcs.png" alt="Pcs gamers">
                     <div class="category-title">
                         <h4>pcs gamers</h4>
@@ -184,7 +184,7 @@
             </article>
 
             <article class="category-card">
-                <a href="/productos.html">
+                <a class="categoria-btn" data-categoria=2>
                     <img class="category-image" src="/img/categoriaTeclayRat.png" alt="Teclados y Ratones">
                     <div class="category-title">
                         <h4>teclados y ratones</h4>
@@ -193,7 +193,7 @@
             </article>
 
             <article class="category-card">
-                <a href="/productos.html">
+                <a class="categoria-btn" data-categoria=3>
                     <img class="category-image" src="/img/categoriaPerifericos.png" alt="Otros perifericos">
                     <div class="category-title">
                         <h4>otros perifericos</h4>
@@ -274,8 +274,8 @@
     </section>
 
     <!-- Scripts -->
-    <script src="js/index.js"></script>
-    <script src="js/productos.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/productos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- MDB -->

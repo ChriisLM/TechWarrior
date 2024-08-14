@@ -87,3 +87,49 @@ function agregarACarrito(event) {
     document.querySelector('#carrito-numero').textContent = cantidadArticulosEnCarrito
     localStorage.setItem('cantidadArticulosEnCarrito', cantidadArticulosEnCarrito);
 }
+
+
+
+// Enviamos la categoria a productos
+// const categoriaButtons = document.querySelectorAll('.categoria-btn');
+
+
+// categoriaButtons.forEach(button => {
+//     button.addEventListener('click', (event) => {
+//         event.preventDefault(); // Evita la acción predeterminada del enlace
+
+//         const categoria = button.getAttribute('data-categoria');
+//         console.log(`/productos?categoria=${categoria}`);
+
+//         // Cambia la URL y redirige a productos.html con el parámetro de categoría
+//         window.location.href = `/productos?categoria=${categoria}`;
+//     });
+// });
+
+
+// categoriaButtons.forEach(button => {
+//     button.addEventListener('click', (event) => {
+//         console.log("Botón de categoría clicado");
+        
+//         const categoria = button.getAttribute('data-categoria');
+//         console.log(`/productos/${categoria}`);
+        
+//         fetch(`/productos/${categoria}`)
+//             .then(response => {
+//                 if (!response.ok) {
+//                     throw new Error(`Error en la solicitud: ${response.status}`);
+//                 }
+//                 return response.json();
+//             })
+//             .then(data => {
+//                 console.log("Datos recibidos:", data);
+//                 const categoriaNombre = data.categoriaNombre;
+//                 window.location.href = `/productos?categoria=${categoria}`;
+//                 history.pushState(null, '', `/productos/${categoria}`);
+//                 console.log(data.productos);
+//             })
+//             .catch(error => {
+//                 console.error('Error en el fetch:', error);
+//             });
+//     });
+// });
