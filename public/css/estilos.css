@@ -173,12 +173,18 @@ body,section{
     transition: opacity 0.5s ease-in-out;
 }
 
+.product-image-container{
+    height: 47%;
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+    overflow: hidden;
+}
+
 .product-card img{
     display: flex;
     margin: 0 auto;
-    /*Agregar aqui el gradiente de fondo*/
     width: 80%;
-    height: 47%;
+    transform: translateY(-10%);
+    filter: drop-shadow(0 0 10px #000);
 }
 
 .product-details{

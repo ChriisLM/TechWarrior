@@ -40,7 +40,9 @@ cardsProductos()
 
 function agregarInfo(product){
     return `
-        <img src="img/tarjeta1.jpeg" alt="">
+        <div class="product-image-container">
+            <img src="img/productos/11.png" alt="">
+        </div>
         <div class="product-details">
             <h3>${product.productoNombre}</h3>
             <p class="product-description">${product.productoDescripcion}</p>

@@ -56,12 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function agregarInfo(product){
+    let precio = Math.round(product.precio * 100)/100;
     return `
-        <img src="img/tarjeta1.jpeg" alt="">
+        <div class="product-image-container">
+            <img src="img/productos/${product.id_producto}.png" alt="">
+        </div>
         <div class="product-details">
             <h3>${product.nombre}</h3>
             <p class="product-description">${product.descripcion}</p>
-            <p class="product-price">${product.precio}</p>
+            <p class="product-price">${'$ '+precio.toLocaleString("es") + ",00"}</p>
             <div class="product-btn">
                 <span class="disable">${product.id_producto}</span>
                 <button id="boton" type="button">Añadir al Carrito</button>
