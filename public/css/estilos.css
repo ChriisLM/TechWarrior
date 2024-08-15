@@ -164,6 +164,63 @@ body,section{
 }
 
 .product-card{
+    width: 220px;
+    height: 310px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease-in-out;
+}
+
+.product-card img{
+    display: flex;
+    margin: 0 auto;
+    /*Agregar aqui el gradiente de fondo*/
+    width: 80%;
+    height: 47%;
+}
+
+.product-details{
+    height: 53%;
+    overflow: hidden;
+}
+.product-details h3{
+    height: 27%;
+    margin: 0;
+    font-size: 18px;
+    text-align: center;
+}
+.product-details p{
+    color: #333;
+    margin: 0;
+    padding-left: .5em;
+}
+.product-description{
+    height: 32%;
+    overflow: hidden;
+    font-size: 14px;
+}
+.product-price{
+    height: 16%;
+    font-weight: bold;
+    font-size: 17px;
+}
+.product-btn{
+    height: 25%;
+}
+.product-btn button{
+    height: 100%;
+    width: 100%;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+/* .product-card{
     width: 200px;
     height: 300px;
     background-color: white;
@@ -193,6 +250,11 @@ body,section{
     margin: 0 0 16px;
 }
 
+.product-description{
+    height: 5px;
+    overflow: hidden;
+}
+
 .product-price{
     font-size: 16px;
     color: #888;
@@ -214,7 +276,7 @@ body,section{
     cursor: pointer;
     text-transform: uppercase;
     font-size: 15px;
-}
+} */
 
 .slogan-container{
     position: relative;

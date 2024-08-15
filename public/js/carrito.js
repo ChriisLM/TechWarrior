@@ -43,7 +43,7 @@ function agregarInfo(product){
         <img src="img/tarjeta1.jpeg" alt="">
         <div class="product-details">
             <h3>${product.productoNombre}</h3>
-            <p>${product.productoDescripcion}</p>
+            <p class="product-description">${product.productoDescripcion}</p>
             <p class="product-price">${product.productoPrecio}</p>
             <div class="product-btn">
                 <span class="disable">${product.id}</span>

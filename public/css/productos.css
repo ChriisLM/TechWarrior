@@ -1,0 +1,10 @@
+#productos{
+    display: flex;
+    padding: 2em;
+    flex-wrap: wrap;
+    column-gap: 50px;
+    row-gap: 40px;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center;
+}

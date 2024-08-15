@@ -37,14 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (data.productos.length > 0) {
                 data.productos.forEach(producto => {
-                    const productoElement = document.createElement('div');
-                    productoElement.className = 'producto';
-                    productoElement.innerHTML = `
-                        <h2>${producto.nombre}</h2>
-                        <p>${producto.descripcion}</p>
-                        <p>Precio: $${producto.precio}</p>
-                    `;
-                    productosDiv.appendChild(productoElement);
+                    const productoElement = document.createElement('article');
+                    productoElement.classList.add('product-card');
+                    let cardInfo = agregarInfo(producto)
+                    productoElement.innerHTML = cardInfo
+                    productosDiv.appendChild(productoElement)
                 });
             } else {
                 productosDiv.innerHTML = '<p>No se encontraron productos en esta categoría.</p>';
@@ -58,46 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
-
-// const categoriaButtons = document.querySelectorAll('.categoria-btn');
-
-
-// categoriaButtons.forEach(button => {
-//     button.addEventListener('click', (event) => {
-
-//         const categoria = button.getAttribute('data-categoria');
-//         console.log(categoria);
-//         console.log(`/productos?categoria=${categoria}`);
-
-//         // Cambia la URL y redirige a productos.html con el parámetro de categoría
-//         window.location.href = `/productos?categoria=${categoria}`;
-//         if (categoria) {
-//             console.log("AQUI SI SE EJECUTO");
-            
-//             fetch(`/productos/data?categoria=${categoria}`, {
-//                 headers: {
-//                     'X-Requested-With': 'XMLHttpRequest' // Marca esta solicitud como AJAX
-//                 }
-//             })
-//                 .then(response => {
-//                     if (!response.ok) {
-//                         throw new Error(`Error en la solicitud: ${response.status}`);
-//                     }
-//                     return response.json();
-//                 })
-//                 .then(data => {
-//                     console.log("Datos recibidos:", data);
-//                     // Aquí puedes manejar la data para mostrar los productos en la página
-            
-//                 })
-//                 .catch(error => {
-//                     console.error('Error en el fetch:', error);
-//                 });
-//         } else {
-//             console.error('No se ha proporcionado categoría en la URL');
-//         }
-//     });
-// });
-
-// Asegúrate de que haya un valor de categoría
+function agregarInfo(product){
+    return `
+        <img src="img/tarjeta1.jpeg" alt="">
+        <div class="product-details">
+            <h3>${product.nombre}</h3>
+            <p class="product-description">${product.descripcion}</p>
+            <p class="product-price">${product.precio}</p>
+            <div class="product-btn">
+                <span class="disable">${product.id_producto}</span>
+                <button id="boton" type="button">Añadir al Carrito</button>
+            </div>
+        </div>`
+}
