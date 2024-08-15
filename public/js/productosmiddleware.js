@@ -2,10 +2,6 @@ const express = require('express')
 const path = require('path');
 const router = express.Router();
 
-// Ruta para servir el archivo productos.html
-router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../productos.html'));  // Ajusta la ruta según tu estructura
-});
 
 // Ruta para manejar la consulta de productos con la categoría
 router.get('/data', (req, res) => {
@@ -41,6 +37,10 @@ router.get('/data', (req, res) => {
             res.json(response);
         });
     });
+});
+
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../productos.html'));  // Ajusta la ruta según tu estructura
 });
 
 module.exports = router;
