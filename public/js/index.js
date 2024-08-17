@@ -60,76 +60,104 @@ function toggleMenu() {
     menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 }
 
-//Botones de las cards de productos
-let botones = document.querySelectorAll('#boton')
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('/productosDestacados')
+        .then(response => {
+            if (!response.ok) {
+                console.log(response);
+                throw new Error(`Error en la solicitud: ${response.status}`);
+                
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Productos destacados:', data.productos);
+            const productosDiv = document.querySelector('.product-container');
+            if (data.productos.length > 0) {
+                data.productos.forEach(producto => {
+                    const productoElement = document.createElement('article');
+                    productoElement.classList.add('product-card');
+                    let cardInfo = agregarCardDestacados(producto)
+                    productoElement.innerHTML = cardInfo
+                    productosDiv.appendChild(productoElement)
+                });
+            } else {
+                productosDiv.innerHTML = '<p>No se encontraron productos en esta categoría.</p>';
+            }
+        })
+        .catch(error => {
+            console.error('Error al obtener los productos destacados:', error);
+        });
+});
 
-botones.forEach(boton => {
-    boton.addEventListener('click', agregarACarrito);
+function agregarCardDestacados(product){
+    let precio = Math.round(product.precio * 100)/100;
+    
+    return `
+        <div class="product-image-container">
+            <img src="img/productos/${product.id_producto}.png" alt="">
+        </div>
+        <div class="product-details">
+            <h3>${product.nombre}</h3>
+            <p class="product-description">${product.descripcion}</p>
+            <p class="product-price">${'$ '+precio.toLocaleString("es") + ",00"}</p>
+            <div class="product-btn">
+                <span id="product-id" class="disable">${product.id_producto}</span>
+                <button id="boton" type="button">Añadir al Carrito</button>
+            </div>
+        </div>`
+}
+
+
+//Botones de las cards de productos
+
+let contenedor = document.querySelector('.product-container');
+
+contenedor.addEventListener('click', function(event) {
+    // Verifica si el elemento clickeado es un botón
+    if (event.target && event.target.id === 'boton') {
+        agregarACarrito(event);
+    }
 });
 
 // Funcion para agregar al carrito
-let id = 0
 function agregarACarrito(event) {
+
     let boton = event.target
     let productoInfo = boton.closest('.product-details')
+    let id = productoInfo.querySelector('#product-id').textContent
 
-    //Seleccion de la informacion de la card
-    let productoNombre = productoInfo.querySelector('h3').textContent
-    let productoDescripcion = productoInfo.querySelector('p').textContent
-    let productoPrecio = productoInfo.querySelector('.product-price').textContent
+    // let productoExistente = productosCarrito.find(producto => producto.id === id);
 
-    cantidadArticulosEnCarrito++
-    id = cantidadArticulosEnCarrito
+    // if (productoExistente) {
+    //     console.log("Producto ya agregado al carrito");
+        
+    // }
 
+    let indexProductoExistente = productosCarrito.findIndex(producto => producto.id === id);
+
+    if (indexProductoExistente !== -1) {
+        productosCarrito[indexProductoExistente].cantidad += 1;
+        
+    } else {
+        
+        //Seleccion de la informacion de la card
+        let productoNombre = productoInfo.querySelector('h3').textContent
+        let productoDescripcion = productoInfo.querySelector('p').textContent
+        let productoPrecio = productoInfo.querySelector('.product-price').textContent
+
+        //Quitar formato al precio
+        let precioSinSimbolo = productoPrecio.replace('$', '').trim();
+        let precioSinPuntos = precioSinSimbolo.replace(/\./g, '');
+        let precioSinDecimales = precioSinPuntos.replace(',00', '');
+        productoPrecio = parseInt(precioSinDecimales, 10);
+        
+        cantidadArticulosEnCarrito++
+        let cantidad = 1;
+        productosCarrito.push({id,cantidad,productoNombre,productoDescripcion,productoPrecio})
+    }
     //Envio de inforamcion al localStorage
-    productosCarrito.push({id,productoNombre,productoDescripcion,productoPrecio})
     localStorage.setItem('productosCarrito', JSON.stringify(productosCarrito));
     document.querySelector('#carrito-numero').textContent = cantidadArticulosEnCarrito
     localStorage.setItem('cantidadArticulosEnCarrito', cantidadArticulosEnCarrito);
 }
-
-
-
-// Enviamos la categoria a productos
-// const categoriaButtons = document.querySelectorAll('.categoria-btn');
-
-
-// categoriaButtons.forEach(button => {
-//     button.addEventListener('click', (event) => {
-//         event.preventDefault(); // Evita la acción predeterminada del enlace
-
-//         const categoria = button.getAttribute('data-categoria');
-//         console.log(`/productos?categoria=${categoria}`);
-
-//         // Cambia la URL y redirige a productos.html con el parámetro de categoría
-//         window.location.href = `/productos?categoria=${categoria}`;
-//     });
-// });
-
-
-// categoriaButtons.forEach(button => {
-//     button.addEventListener('click', (event) => {
-//         console.log("Botón de categoría clicado");
-        
-//         const categoria = button.getAttribute('data-categoria');
-//         console.log(`/productos/${categoria}`);
-        
-//         fetch(`/productos/${categoria}`)
-//             .then(response => {
-//                 if (!response.ok) {
-//                     throw new Error(`Error en la solicitud: ${response.status}`);
-//                 }
-//                 return response.json();
-//             })
-//             .then(data => {
-//                 console.log("Datos recibidos:", data);
-//                 const categoriaNombre = data.categoriaNombre;
-//                 window.location.href = `/productos?categoria=${categoria}`;
-//                 history.pushState(null, '', `/productos/${categoria}`);
-//                 console.log(data.productos);
-//             })
-//             .catch(error => {
-//                 console.error('Error en el fetch:', error);
-//             });
-//     });
-// });

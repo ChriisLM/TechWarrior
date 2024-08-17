@@ -133,7 +133,6 @@ body,section{
 
 .product-section{
     height: 38rem;
-    padding-left: 4em;
     padding-top: 3em;
     padding-bottom: 3em;
 }
@@ -161,6 +160,7 @@ body,section{
     color: white;
     display: flex;
     justify-content: center;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .product-card{
@@ -171,6 +171,7 @@ body,section{
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: opacity 0.5s ease-in-out;
+    font-family: 'Roboto', sans-serif;
 }
 
 .product-image-container{
@@ -192,10 +193,13 @@ body,section{
     overflow: hidden;
 }
 .product-details h3{
-    height: 27%;
-    margin: 0;
+    height: 29%;
+    margin: 0 auto;
     font-size: 18px;
     text-align: center;
+    align-content: center;
+    width: 90%;
+    color: #4f4f4f;
 }
 .product-details p{
     color: #333;
@@ -203,7 +207,7 @@ body,section{
     padding-left: .5em;
 }
 .product-description{
-    height: 32%;
+    height: 30%;
     overflow: hidden;
     font-size: 14px;
 }
@@ -386,11 +390,12 @@ body,section{
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     z-index: 1;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .category-title h4{
     color: white;
-    font-size: 18px;
+    font-size: 17px;
     text-align: center;
     text-transform: uppercase;
     margin: 0;
@@ -425,6 +430,7 @@ body,section{
     padding: 2em;
     height: 465px;
     border-radius: 15px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 

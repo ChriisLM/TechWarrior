@@ -41,14 +41,14 @@ cardsProductos()
 function agregarInfo(product){
     return `
         <div class="product-image-container">
-            <img src="img/productos/11.png" alt="">
+            <img src="img/productos/${product.id}.png" alt="">
         </div>
         <div class="product-details">
             <h3>${product.productoNombre}</h3>
             <p class="product-description">${product.productoDescripcion}</p>
             <p class="product-price">${product.productoPrecio}</p>
             <div class="product-btn">
-                <span class="disable">${product.id}</span>
+                <span id="product-id" class="disable">${product.id}</span>
                 <button id="boton" type="button">Eliminar del Carrito</button>
             </div>
         </div>`
@@ -97,7 +97,7 @@ function agregarItemsAPago() {
                 </div>
                 <div class="selector-cantidad">
                     <i class="fa-solid fa-minus restar-cantidad"></i>
-                    <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                    <input type="text" value="${product.cantidad}" class="carrito-item-cantidad" disabled>
                     <i class="fa-solid fa-plus sumar-cantidad"></i>
                 </div>
             </div>
