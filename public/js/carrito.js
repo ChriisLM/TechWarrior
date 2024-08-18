@@ -74,6 +74,7 @@ function quitarDelCarrito(event){
 
 
         const productIndex = productosCarrito.findIndex(product => product.id === productId);
+        
         productosCarrito.splice(productIndex, 1);
         localStorage.setItem('productosCarrito', JSON.stringify(productosCarrito))
         card.remove()
@@ -89,7 +90,7 @@ function agregarItemsAPago() {
         let cardPago = document.createElement('div');
         let precio = Math.round(product.productoPrecio * 100)/100;
         let cardInfo = `
-            <span id="id-${product.id}" class=" disable"></span>
+            <span id="id-${product.id}" class="disable"></span>
             <div class="carrito-item-detalles">
                 <div class="carrito-info">
                     <span class="carrito-item-titulo">${product.productoNombre}</span>
@@ -142,9 +143,9 @@ function actualizarTotalCarrito(){
     //seleccionamos el contenedor carrito
     let total = 0;
     productosCarrito.forEach(product => {
-        let cardPago = document.querySelector(`#id-${product.id}`).parentNode
-        let cantidad = cardPago.getElementsByClassName('carrito-item-cantidad')[0].value;
-        total += (product.productoPrecio * cantidad)
+        // let cardPago = document.querySelector(`#id-${product.id}`).parentNode
+        // let cantidad = cardPago.getElementsByClassName('carrito-item-cantidad')[0].value;
+        total += (product.productoPrecio * product.cantidad)
     })
     total = Math.round(total * 100)/100;
 

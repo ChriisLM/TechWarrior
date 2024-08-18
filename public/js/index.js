@@ -109,6 +109,21 @@ function agregarCardDestacados(product){
 }
 
 
+const categoriaButtons = document.querySelectorAll('.categoria-btn');
+
+categoriaButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault(); // Evita la acción predeterminada del enlace
+
+        const categoria = button.getAttribute('data-categoria');
+        console.log(`Categoría seleccionada: ${categoria}`);
+
+        // Cambia la URL y redirige a productos.html con el parámetro de categoría
+        window.location.href = `/productos?categoria=${categoria}`;
+    });
+});
+
+
 //Botones de las cards de productos
 
 let contenedor = document.querySelector('.product-container');
@@ -120,13 +135,23 @@ contenedor.addEventListener('click', function(event) {
     }
 });
 
+// let contenedorCategoria = document.querySelector('#productosCategoria');
+
+// contenedorCategoria.addEventListener('click', function(event) {
+//     // Verifica si el elemento clickeado es un botón
+//     if (event.target && event.target.id === 'boton') {
+//         console.log("aqui click en index");
+        
+//         agregarACarrito(event);
+//     }
+// });
+
 // Funcion para agregar al carrito
 function agregarACarrito(event) {
 
     let boton = event.target
     let productoInfo = boton.closest('.product-details')
-    let id = productoInfo.querySelector('#product-id').textContent
-
+    let id = parseInt(productoInfo.querySelector('#product-id').textContent)
     // let productoExistente = productosCarrito.find(producto => producto.id === id);
 
     // if (productoExistente) {
@@ -161,3 +186,15 @@ function agregarACarrito(event) {
     document.querySelector('#carrito-numero').textContent = cantidadArticulosEnCarrito
     localStorage.setItem('cantidadArticulosEnCarrito', cantidadArticulosEnCarrito);
 }
+
+let sliderInner = document.querySelector(".slider-inner");
+let images = document.querySelectorAll(".slider-image");
+let index = 1;
+setInterval(function(){
+    let percentage = index * -100;
+    sliderInner.style.transform = `translateX(${percentage}%`
+        index++
+    if(index > (images.length-1)){
+        index = 0;
+    }
+},5000)

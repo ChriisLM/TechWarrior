@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Warrior</title>
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/estilos.css">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -55,7 +56,13 @@
 
     </header>
     <!-- Slider -->
-
+    <div class="slider">
+        <div class="slider-inner">
+            <img class="slider-image" src="img/Carrusel1.png" alt="">
+            <img class="slider-image" src="img/Carrusel2.png" alt="">
+            <img class="slider-image" src="img/Carrusel3.png" alt="">
+        </div>
+    </div>
     
     <!-- Productos -->
     <section class="product-section">
@@ -102,7 +109,7 @@
     </section>
     <!-- Frase2 -->
     <div class="contact-text-container">
-        <p>¿Necesitas más información?</p>
+        <p class="contact-text">¿Necesitas más información?</p>
         <p>¡Estamos aquí para ayudarte!</p>
     </div>
     <!-- Contacto -->
@@ -113,31 +120,23 @@
                 <!-- Name input -->
                 <div class="input-group">
                     <input type="text" id="nameInput" class="input-field" required />
-                    <label class="input-label" for="nameInput">Name</label>
+                    <label class="input-label" for="nameInput">Nombre</label>
                 </div>
 
                 <!-- Email input -->
                 <div class="input-group">
                     <input type="email" id="emailInput" class="input-field" required />
-                    <label class="input-label" for="emailInput">Email address</label>
+                    <label class="input-label" for="emailInput">Correo Electronico</label>
                 </div>
 
                 <!-- Message input -->
                 <div class="input-group">
                     <textarea class="textarea-field" id="messageInput" rows="4" required></textarea>
-                    <label class="input-label" for="messageInput">Message</label>
-                </div>
-
-                <!-- Checkbox -->
-                <div class="checkbox-group">
-                    <input class="checkbox-input" type="checkbox" value="" id="copyCheckbox" checked />
-                    <label class="checkbox-label" for="copyCheckbox">
-                        Send me a copy of this message
-                    </label>
+                    <label class="input-label" for="messageInput">Mensage</label>
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" class="submit-btn">Send</button>
+                <button type="submit" class="submit-btn">Enviar</button>
             </form>
         </div>
         <div class="contact-data">
@@ -173,7 +172,6 @@
 
     <!-- Scripts -->
     <script src="/js/index.js"></script>
-    <script src="/js/productos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>

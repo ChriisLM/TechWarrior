@@ -1,16 +1,71 @@
-const categoriaButtons = document.querySelectorAll('.categoria-btn');
+//Obtenemos el boton de login
+const login = document.querySelector("#login")
 
-categoriaButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        event.preventDefault(); // Evita la acción predeterminada del enlace
+//Redirigimos a la pagina de login
+login.addEventListener('click', () => {
+    window.location.href = 'login.html'
+})
 
-        const categoria = button.getAttribute('data-categoria');
-        console.log(`Categoría seleccionada: ${categoria}`);
+const perfil = document.querySelector("#perfil") // Boton de Perfil
+const user = JSON.parse(localStorage.getItem('login_success')) || false //Usuarios dentro del localStorage
 
-        // Cambia la URL y redirige a productos.html con el parámetro de categoría
-        window.location.href = `/productos?categoria=${categoria}`;
-    });
-});
+const carritoContainer = document.querySelector('#carrito') //Boton del carrito
+
+let cantidadArticulosEnCarritoCategoria = parseInt(localStorage.getItem('cantidadArticulosEnCarrito')) || 0; // Cantidad de productos
+const productosCarritoCategoria = JSON.parse(localStorage.getItem('productosCarrito')) || [] //Inforamcion de los productos dentro del localStorage
+
+//Validacion del login
+if(user){
+    login.classList.add('disable')
+    perfil.classList.remove('disable')
+    carritoContainer.classList.remove('disable')
+    document.querySelector('#carrito-numero').textContent = cantidadArticulosEnCarritoCategoria
+}
+
+//boton del logout
+const logout = document.querySelector('#logout')
+
+//validaciones del logout
+logout.addEventListener('click', () => {
+    Swal.fire({
+        icon: 'info',
+        title: 'Cerrar Sesion',
+        text: 'Estas seguro de que quieres cerra sesion?',
+        showCancelButton: true,
+        confirmButtomText: 'Si, cerrar sesion',
+        cancelButtonText: 'Cancelar',
+        allowOutsideClick: false
+    }).then((result) => {
+        if(result.isConfirmed){
+            localStorage.removeItem('login_success')
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Sesion Cerrada',
+                text: 'Tu sesion ha sido cerrada correctamente',
+                confirmButtomText: 'OK',
+                allowOutsideClick: false
+            }).then(() => {
+                login.classList.remove('disable')
+                perfil.classList.add('disable')
+                carritoContainer.classList.add('disable')
+            })
+        }
+    })
+})
+
+//Menu del perfil
+function toggleMenu() {
+    var menu = document.getElementById('opcionesMenu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+
+
+
+
+
+
 
 // Este bloque se ejecuta cuando la página productos.html se carga
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             console.log("Datos recibidos:", data);
-            const productosDiv = document.getElementById('productos');
+            const productosDiv = document.getElementById('productosCategoria');
             
             if (data.productos.length > 0) {
                 data.productos.forEach(producto => {
@@ -66,8 +121,60 @@ function agregarInfo(product){
             <p class="product-description">${product.descripcion}</p>
             <p class="product-price">${'$ '+precio.toLocaleString("es") + ",00"}</p>
             <div class="product-btn">
-                <span class="disable">${product.id_producto}</span>
+                <span id="product-id" class="disable">${product.id_producto}</span>
                 <button id="boton" type="button">Añadir al Carrito</button>
             </div>
         </div>`
+}
+
+let contenedorCategoria = document.querySelector('#productosCategoria');
+
+contenedorCategoria.addEventListener('click', function(event) {
+    // Verifica si el elemento clickeado es un botón
+    if (event.target && event.target.id === 'boton') {
+        console.log("aqui click en index");
+        
+        agregarACarritoCategoria(event);
+    }
+});
+
+function agregarACarritoCategoria(event) {
+
+    let boton = event.target
+    let productoInfo = boton.closest('.product-details')
+    let id = productoInfo.querySelector('#product-id').textContent
+
+    // let productoExistente = productosCarritoCategoria.find(producto => producto.id === id);
+
+    // if (productoExistente) {
+    //     console.log("Producto ya agregado al carrito");
+        
+    // }
+
+    let indexProductoExistente = productosCarritoCategoria.findIndex(producto => producto.id === id);
+
+    if (indexProductoExistente !== -1) {
+        productosCarritoCategoria[indexProductoExistente].cantidad += 1;
+        
+    } else {
+        
+        //Seleccion de la informacion de la card
+        let productoNombre = productoInfo.querySelector('h3').textContent
+        let productoDescripcion = productoInfo.querySelector('p').textContent
+        let productoPrecio = productoInfo.querySelector('.product-price').textContent
+
+        //Quitar formato al precio
+        let precioSinSimbolo = productoPrecio.replace('$', '').trim();
+        let precioSinPuntos = precioSinSimbolo.replace(/\./g, '');
+        let precioSinDecimales = precioSinPuntos.replace(',00', '');
+        productoPrecio = parseInt(precioSinDecimales, 10);
+        
+        cantidadArticulosEnCarritoCategoria++
+        let cantidad = 1;
+        productosCarritoCategoria.push({id,cantidad,productoNombre,productoDescripcion,productoPrecio})
+    }
+    //Envio de inforamcion al localStorage
+    localStorage.setItem('productosCarrito', JSON.stringify(productosCarritoCategoria));
+    document.querySelector('#carrito-numero').textContent = cantidadArticulosEnCarritoCategoria
+    localStorage.setItem('cantidadArticulosEnCarrito', cantidadArticulosEnCarritoCategoria);
 }
