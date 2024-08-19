@@ -8,3 +8,28 @@
     margin: 0 auto;
     justify-content: center;
 }
+
+
+.menu-categorias:hover .menu-categorias-ul{
+    display: block;
+}
+
+.menu-categorias-ul{
+    display: none;
+    position: absolute;
+    padding: 0;
+    padding-top: .9em;
+    transform: translateX(-35%);
+}
+
+.menu-categorias-container{
+    display: flex;
+    justify-content: space-between;
+    width: 27em;
+}
+
+.categoria-item{
+    list-style: none;
+    text-transform: capitalize;
+    font-size: 15px;
+}

@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const productosRouter = require('./productosmiddleware');
 const productosDestacadosRouter = require('./indexMiddleware');
+const nosotrosRouter = require('./nosotrosMiddleware');
 const app = express();
 
 
@@ -56,4 +57,5 @@ app.get("/register", (req,res) => {
 
 app.use('/productos', productosRouter);
 app.use(productosDestacadosRouter);
+app.use(nosotrosRouter);
 // app.use('/productosDestacados', productosDestacadosRouter);

@@ -60,24 +60,24 @@ function toggleMenu() {
     menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 }
 
+//Importamos los datos de la base de datos atraves del backend
+
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/productosDestacados')
+    fetch('/productosDestacados') //llamado al backend
         .then(response => {
             if (!response.ok) {
                 console.log(response);
                 throw new Error(`Error en la solicitud: ${response.status}`);
-                
             }
             return response.json();
         })
-        .then(data => {
-            console.log('Productos destacados:', data.productos);
+        .then(data => { //Utilizamos los datos extraidos desde aqui
             const productosDiv = document.querySelector('.product-container');
             if (data.productos.length > 0) {
                 data.productos.forEach(producto => {
                     const productoElement = document.createElement('article');
                     productoElement.classList.add('product-card');
-                    let cardInfo = agregarCardDestacados(producto)
+                    let cardInfo = agregarCardDestacados(producto)//Aqui agregamos las cards de los productos
                     productoElement.innerHTML = cardInfo
                     productosDiv.appendChild(productoElement)
                 });
@@ -90,9 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
+//Formato de las card de los productos
+
 function agregarCardDestacados(product){
     let precio = Math.round(product.precio * 100)/100;
-    
+    //Le damos formato de pesos con precio.toLocalString
     return `
         <div class="product-image-container">
             <img src="img/productos/${product.id_producto}.png" alt="">
@@ -108,17 +110,17 @@ function agregarCardDestacados(product){
         </div>`
 }
 
-
+//Redireccionamos a cada categoria seleccionada
 const categoriaButtons = document.querySelectorAll('.categoria-btn');
 
 categoriaButtons.forEach(button => {
     button.addEventListener('click', (event) => {
-        event.preventDefault(); // Evita la acción predeterminada del enlace
+        event.preventDefault();
 
+        //Obtenemos la categoria del data-categoria del html
         const categoria = button.getAttribute('data-categoria');
-        console.log(`Categoría seleccionada: ${categoria}`);
 
-        // Cambia la URL y redirige a productos.html con el parámetro de categoría
+        // Cambia la URL y redirige a productos.html con el parámetro de la categoría
         window.location.href = `/productos?categoria=${categoria}`;
     });
 });
@@ -135,18 +137,8 @@ contenedor.addEventListener('click', function(event) {
     }
 });
 
-// let contenedorCategoria = document.querySelector('#productosCategoria');
+// Funcion para agregar al carrito los productos y que se almacene en el localstorage
 
-// contenedorCategoria.addEventListener('click', function(event) {
-//     // Verifica si el elemento clickeado es un botón
-//     if (event.target && event.target.id === 'boton') {
-//         console.log("aqui click en index");
-        
-//         agregarACarrito(event);
-//     }
-// });
-
-// Funcion para agregar al carrito
 function agregarACarrito(event) {
 
     let boton = event.target
@@ -162,7 +154,7 @@ function agregarACarrito(event) {
     let indexProductoExistente = productosCarrito.findIndex(producto => producto.id === id);
 
     if (indexProductoExistente !== -1) {
-        productosCarrito[indexProductoExistente].cantidad += 1;
+        productosCarrito[indexProductoExistente].cantidad += 1;//Si ya existe el producto suma es la cantidad
         
     } else {
         
@@ -171,7 +163,7 @@ function agregarACarrito(event) {
         let productoDescripcion = productoInfo.querySelector('p').textContent
         let productoPrecio = productoInfo.querySelector('.product-price').textContent
 
-        //Quitar formato al precio
+        //Quitamos el formato al precio para pasarlo con un entero
         let precioSinSimbolo = productoPrecio.replace('$', '').trim();
         let precioSinPuntos = precioSinSimbolo.replace(/\./g, '');
         let precioSinDecimales = precioSinPuntos.replace(',00', '');
@@ -179,6 +171,7 @@ function agregarACarrito(event) {
         
         cantidadArticulosEnCarrito++
         let cantidad = 1;
+        //Lo agregamos a los productos
         productosCarrito.push({id,cantidad,productoNombre,productoDescripcion,productoPrecio})
     }
     //Envio de inforamcion al localStorage
@@ -187,9 +180,11 @@ function agregarACarrito(event) {
     localStorage.setItem('cantidadArticulosEnCarrito', cantidadArticulosEnCarrito);
 }
 
+// Funcionalidad del Slider
 let sliderInner = document.querySelector(".slider-inner");
 let images = document.querySelectorAll(".slider-image");
 let index = 1;
+//Funcion para que vaya recorriendo las imagenes
 setInterval(function(){
     let percentage = index * -100;
     sliderInner.style.transform = `translateX(${percentage}%`

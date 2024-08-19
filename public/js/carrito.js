@@ -39,6 +39,7 @@ function cardsProductos(){
 cardsProductos()
 
 function agregarInfo(product){
+    let precio = Math.round(product.productoPrecio * 100)/100;
     return `
         <div class="product-image-container">
             <img src="img/productos/${product.id}.png" alt="">
@@ -46,7 +47,7 @@ function agregarInfo(product){
         <div class="product-details">
             <h3>${product.productoNombre}</h3>
             <p class="product-description">${product.productoDescripcion}</p>
-            <p class="product-price">${product.productoPrecio}</p>
+            <p class="product-price">${'$ '+precio.toLocaleString("es") + ",00"}</p>
             <div class="product-btn">
                 <span id="product-id" class="disable">${product.id}</span>
                 <button id="boton" type="button">Eliminar del Carrito</button>
@@ -90,7 +91,7 @@ function agregarItemsAPago() {
         let cardPago = document.createElement('div');
         let precio = Math.round(product.productoPrecio * 100)/100;
         let cardInfo = `
-            <span id="id-${product.id}" class="disable"></span>
+            <span id="id-${product.id}" class="disable">${product.id}</span>
             <div class="carrito-item-detalles">
                 <div class="carrito-info">
                     <span class="carrito-item-titulo">${product.productoNombre}</span>
@@ -124,6 +125,10 @@ function sumarCantidad(event){
     var cantidadActual = selector.getElementsByClassName('carrito-item-cantidad')[0].value;
     cantidadActual++;
     selector.getElementsByClassName('carrito-item-cantidad')[0].value = cantidadActual;
+    let card = event.target.parentNode.parentNode.parentNode
+    let productId = parseInt(card.querySelector('span').textContent) 
+    let indexProducto = productosCarrito.findIndex(producto => producto.id === productId);
+    productosCarrito[indexProducto].cantidad += 1;
     actualizarTotalCarrito();
 }
 //Resto en uno la cantidad del elemento seleccionado
@@ -134,6 +139,10 @@ function restarCantidad(event){
     cantidadActual--;
     if(cantidadActual>=1){
         selector.getElementsByClassName('carrito-item-cantidad')[0].value = cantidadActual;
+        let card = event.target.parentNode.parentNode.parentNode
+        let productId = parseInt(card.querySelector('span').textContent) 
+        let indexProducto = productosCarrito.findIndex(producto => producto.id === productId);
+        productosCarrito[indexProducto].cantidad -= 1;
         actualizarTotalCarrito();
     }
 }

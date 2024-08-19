@@ -15,14 +15,16 @@ header{
     position: sticky;
     top: 0;
     z-index: 99;
+    background-color: black;
 }
 
 .header-container {
-    background-color: black;
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding: 1em;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .header-container i,
@@ -90,7 +92,7 @@ header{
     font-weight: 600;
 }
 
-.nav-container ul {
+.nav-container .ul {
     background-color: black;
     display: flex;
     justify-content: center;
@@ -137,6 +139,8 @@ header{
 
 .slider {
     overflow: hidden;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .slider-inner {
@@ -156,6 +160,8 @@ header{
     height: 38rem;
     padding-top: 3em;
     padding-bottom: 3em;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .product-container {
@@ -257,64 +263,6 @@ header{
     font-size: 15px;
 }
 
-/* .product-card{
-    width: 200px;
-    height: 300px;
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: opacity 0.5s ease-in-out;
-}
-
-.product-card img{
-    width: 100%;
-    height: 47%;
-}
-
-.product-details{
-    padding-top: 10px;
-}
-
-.product-details h3{
-    font-size: 18px;
-    margin: 0 0 8px;
-}
-
-.product-details p{
-    font-size: 14px;
-    color: #555;
-    margin: 0 0 16px;
-}
-
-.product-description{
-    height: 5px;
-    overflow: hidden;
-}
-
-.product-price{
-    font-size: 16px;
-    color: #888;
-    margin: 0 0 16px;
-}
-
-.product-btn{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.product-btn button{
-    width: 100%;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 15px;
-} */
-
 .slogan-container {
     position: relative;
     display: flex;
@@ -328,6 +276,8 @@ header{
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .slogan-container::before {
@@ -360,6 +310,8 @@ header{
 
 .category-section {
     height: 30rem;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .category-container {
@@ -438,6 +390,8 @@ header{
     background-color: var(--background-color);
     font-family: 'Roboto', sans-serif;
     color: white;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .contact-text-container .contact-text {
@@ -457,7 +411,8 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin-top: 1em;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .contact-form-container {
@@ -596,4 +551,8 @@ header{
 .hidden {
     transition: opacity 5s ease-in-out;
     display: none;
+}
+
+@media (500px <= width >= 1000px) {
+    
 }

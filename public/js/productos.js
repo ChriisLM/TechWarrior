@@ -142,7 +142,7 @@ function agregarACarritoCategoria(event) {
 
     let boton = event.target
     let productoInfo = boton.closest('.product-details')
-    let id = productoInfo.querySelector('#product-id').textContent
+    let id = parseInt(productoInfo.querySelector('#product-id').textContent) 
 
     // let productoExistente = productosCarritoCategoria.find(producto => producto.id === id);
 
