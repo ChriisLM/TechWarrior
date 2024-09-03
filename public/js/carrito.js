@@ -179,3 +179,55 @@ function actualizarTotalCarrito(){
 }
 
 agregarItemsAPago()
+
+// Mensaje de compra realizada
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.btn-pagar');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            Swal.fire({
+                title: "Finalizando tu compra!",
+                html: "Por favor espera...",
+                timer: 2000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            }).then(() => {
+                const Toast = Swal.mixin({
+                    toast: false,
+                    position: "center",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: '¡Compra Realizada Exitosamente!',
+                });
+            });
+        });
+    });
+});
+
+// sweet alert para eliminar producto al carrito
+document.addEventListener('DOMContentLoaded', () => { 
+
+    const buttons = document.querySelectorAll('.productos-container');
+
+    // Itera sobre cada botón y agrega un evento de clic
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "bottom-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+            });
+            Toast.fire({
+                icon: "error",
+                title: 'Producto eliminado del carrito',
+            });
+        });
+    });
+});

@@ -205,3 +205,25 @@ setInterval(function(){
         index = 0;
     }
 },5000)
+
+//Cuadro de mensaje del producto agragado
+document.addEventListener('DOMContentLoaded', () => { 
+
+    const buttons = document.querySelectorAll('.product-container');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "bottom-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+            });
+            Toast.fire({
+                icon: "success",
+                title: 'Producto agregado al carrito',
+            });
+        });
+    });
+});

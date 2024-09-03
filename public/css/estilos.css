@@ -128,10 +128,10 @@ header{
 .opciones-menu {
     display: none;
     position: absolute;
-    top: 50px;
-    right: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
+    top: 60px;
+    right: 90px;
+    background-color:  var(--background-color);
+    border: 1px solid #666;
     padding: 10px;
     border-radius: 5px;
     z-index: 1;
@@ -140,12 +140,12 @@ header{
 .opciones-menu a {
     display: block;
     text-decoration: none;
-    color: #333;
+    color: whitesmoke;
     padding: 5px 0;
 }
 
-.opciones-menu a:hover {
-    background-color: #ddd;
+.opciones-menu:hover {
+    background-color:#333;
 }
 
 /*estilos de slider*/

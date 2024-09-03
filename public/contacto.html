@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Warrior</title>
-    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/css/estilos.css">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tech Warrior</title>
+        <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="/css/estilos.css">
+        <link rel="stylesheet" href="/css/contacto.css">
+    </head>
 </head>
-
 <body>
-    <!-- Header -->
     <header>
         <div class="header-container">
             <button class="hamburger-menu" onclick="toggleMenuHamburguesa()">☰</button>
@@ -23,8 +19,16 @@
             </a>
             <nav class="nav-container">
                 <ul class="ul">
-                    <li><a href="#category">Categorias</a></li>
-                    <li><a href="#contact">Contacto</a></li>
+                    <li class="menu-categorias"><a href="">Categorias</a>
+                        <ul class="menu-categorias-ul">
+                            <div class="menu-categorias-container">
+                                <li class="categoria-item"><a href="productos?categoria=1">pcs gamer</a></li>
+                                <li class="categoria-item"><a href="productos?categoria=2">teclados y ratones</a></li>
+                                <li class="categoria-item"><a href="productos?categoria=3">otros perifericos</a></li>
+                            </div>
+                        </ul>
+                    </li>
+                    <li><a href="/contacto">Contacto</a></li>
                     <li><a href="/nosotros">Nosotros</a></li>
                 </ul>
             </nav>
@@ -46,6 +50,8 @@
                         </svg>
                     </a>
                     <div class="opciones-menu" id="opcionesMenu">
+                        <a href="#">Mi Perfil</a>
+                        <a href="#">Configuración</a>
                         <a href="#" id="logout">Cerrar Sesión</a>
                     </div>
                 </div>
@@ -54,64 +60,6 @@
         </div>
 
     </header>
-    <!-- Slider -->
-    <div class="slider">
-        <div class="slider-inner">
-            <img class="slider-image" src="img/Carrusel1.png" alt="">
-            <img class="slider-image" src="img/Carrusel2.png" alt="">
-            <img class="slider-image" src="img/Carrusel3.png" alt="">
-        </div>
-    </div>
-    
-    <!-- Productos -->
-    <section class="product-section">
-        <h2>¿Buscas lo mejor en tecnología gamer?</h2>
-        <p class="product-section-description">¡Descubre nuestros artículos más populares y de mayor rendimiento!</p>
-        <div class="product-container">
-        </div>
-    </section>
-    <!-- Frase -->
-    <section class="slogan-container">
-        <p>¡Descubre lo último en tecnología gamer!</p>
-        <p>Explora nuestras categorías y encuentra el equipo perfecto para tu experiencia de gaming.</p>
-    </section>
-    <!-- Categorias -->
-    <section class="category-section" id="category">
-        <div class="category-container">
-            <article class="category-card">
-                <a class="categoria-btn" data-categoria=1>
-                    <img class="category-image" src="/img/categoriaPcs.png" alt="Pcs gamers">
-                    <div class="category-title">
-                        <h4>pcs gamers</h4>
-                    </div>
-                </a>
-            </article>
-
-            <article class="category-card">
-                <a class="categoria-btn" data-categoria=2>
-                    <img class="category-image" src="/img/categoriaTeclayRat.png" alt="Teclados y Ratones">
-                    <div class="category-title">
-                        <h4>teclados y ratones</h4>
-                    </div>
-                </a>
-            </article>
-
-            <article class="category-card">
-                <a class="categoria-btn" data-categoria=3>
-                    <img class="category-image" src="/img/categoriaPerifericos.png" alt="Otros perifericos">
-                    <div class="category-title">
-                        <h4>otros perifericos</h4>
-                    </div>
-                </a>
-            </article>
-        </div>
-    </section>
-    <!-- Frase2 -->
-    <div class="contact-text-container">
-        <p class="contact-text">¿Necesitas más información?</p>
-        <p>¡Estamos aquí para ayudarte!</p>
-    </div>
-    <!-- Contacto -->
     <section class="contact-section" id="contact">
         <div class="contact-form-container">
             <form class="form-wrapper">
@@ -119,36 +67,36 @@
                 <!-- Name input -->
                 <div class="input-group">
                     <input type="text" id="nameInput" class="input-field" required />
-                    <label class="input-label" for="nameInput">Nombre</label>
+                    <label class="input-label" for="nameInput">Name</label>
                 </div>
 
                 <!-- Email input -->
                 <div class="input-group">
                     <input type="email" id="emailInput" class="input-field" required />
-                    <label class="input-label" for="emailInput">Correo Electronico</label>
+                    <label class="input-label" for="emailInput">Email address</label>
                 </div>
 
                 <!-- Message input -->
                 <div class="input-group">
                     <textarea class="textarea-field" id="messageInput" rows="4" required></textarea>
-                    <label class="input-label" for="messageInput">Mensage</label>
+                    <label class="input-label" for="messageInput">Message</label>
+                </div>
+
+                <!-- Checkbox -->
+                <div class="checkbox-group">
+                    <input class="checkbox-input" type="checkbox" value="" id="copyCheckbox" checked />
+                    <label class="checkbox-label" for="copyCheckbox">
+                        Send me a copy of this message
+                    </label>
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" class="submit-btn">Enviar</button>
+                <button type="submit" class="submit-btn">Send</button>
             </form>
         </div>
         <div class="contact-data">
-            <article>
-                <div>
-                    <span>Correo</span>
-                    <p>TechWarrior@gmail.com</p>
-                </div>
-                <div>
-                    <span>Telefono</span>
-                    <p>+57 300 1847927</p>
-                </div>
-            </article>
+            <img src="img/banner1.jpg" alt="Banner" class="image-container">
+            <p>¡Siguenos en Nuestras Redes Sociales!</p>
             <div class="contact-redes">
                 <a href="#">
                     <svg width="25" height="25" fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -174,11 +122,9 @@
             </div>
         </div>
     </section>
-
     <!-- Scripts -->
     <script src="/js/index.js"></script>
+    <script src="/js/contacto.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </body>
-
 </html>

@@ -154,12 +154,6 @@ function agregarACarritoCategoria(event) {
     let productoInfo = boton.closest('.product-details')
     let id = parseInt(productoInfo.querySelector('#product-id').textContent) 
 
-    // let productoExistente = productosCarritoCategoria.find(producto => producto.id === id);
-
-    // if (productoExistente) {
-    //     console.log("Producto ya agregado al carrito");
-        
-    // }
 
     let indexProductoExistente = productosCarritoCategoria.findIndex(producto => producto.id === id);
 
@@ -188,3 +182,25 @@ function agregarACarritoCategoria(event) {
     document.querySelector('#carrito-numero').textContent = cantidadArticulosEnCarritoCategoria
     localStorage.setItem('cantidadArticulosEnCarrito', cantidadArticulosEnCarritoCategoria);
 }
+
+//Cuadro de mensaje del producto agragado
+document.addEventListener('DOMContentLoaded', () => { 
+
+    const buttons = document.querySelectorAll('#productosCategoria');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "bottom-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+            });
+            Toast.fire({
+                icon: "success",
+                title: 'Producto agregado al carrito',
+            });
+        });
+    });
+});

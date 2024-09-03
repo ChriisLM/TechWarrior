@@ -149,4 +149,9 @@
     background-position: center;
 }
 
-/*AGREGAR LOS ESTILOS DEL PAGO Y HACER EL FUNCIONAMIENTO DEL PAGO*/
+@media (min-width: 310px) and (max-width: 650px){
+    .productos-section {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}

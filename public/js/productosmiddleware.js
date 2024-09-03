@@ -5,8 +5,7 @@ const router = express.Router();
 
 // Ruta para manejar la consulta de productos con la categoría
 router.get('/data', (req, res) => {
-    const categoriaId = parseInt(req.query.categoria) || 3; // Valor por defecto 3
-    console.log(`Categoria ID: ${categoriaId}`);
+    const categoriaId = parseInt(req.query.categoria) || 1; // Valor por defecto 1
     
     // Primero, obtenemos el nombre de la categoría usando el ID
     const categoriaQuery = 'SELECT nombre FROM categoria WHERE id_categoria = ?';
@@ -33,7 +32,6 @@ router.get('/data', (req, res) => {
             // Ahora que tenemos tanto los productos como el nombre de la categoría,
             // enviamos la respuesta al cliente.
             const response = { productos: productosResult, categoriaNombre: categoriaNombre };
-            console.log(`Informacion enviada: SI`);
             res.json(response);
         });
     });

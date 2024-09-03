@@ -54,6 +54,10 @@ app.get("/nosotros", (req,res) => {
 app.get("/register", (req,res) => {
     res.sendFile(path.join(__dirname, "../signup.html"));
 });
+app.get("/contacto", (req,res) => {
+    res.sendFile(path.join(__dirname, "../contacto.html"));
+});
+
 
 app.use('/productos', productosRouter);
 app.use(productosDestacadosRouter);
